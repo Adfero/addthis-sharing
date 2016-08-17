@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+  <body>
+    <div>
+      <button class="btn-share" data-share-service="facebook" data-share-title="Test title 1" data-share-description="Test description 1" data-share-url="http://adfero.com">Facebook</button>
+      <button class="btn-share" data-share-service="twitter" data-share-title="Test title 2" data-share-description="Test description 2">Twitter</button>
+      <button class="btn-share" data-share-service="linkedin" data-share-title="Test title 3" data-share-description="Test description 3">LinkedIn</button>
+      <button class="btn-share" data-share-service="reddit" data-share-title="Test title 4">Reddit</button>
+      <button class="btn-share" data-share-service="email">Mail</button>
+      <button class="btn-share">Share</button>
+    </div>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="sharing.js"></script>
+    <script>
+      $('.btn-share').addthisSharing();
+    </script>
+  </body>
+</html>
