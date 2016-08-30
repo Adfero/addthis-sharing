@@ -51,7 +51,7 @@
     }
 
     function tryOptions($element,attribute,service,callback,fallback) {
-      if (attribute && network && $element.attr(attribute + '-' + service)) {
+      if (attribute && service && $element.attr(attribute + '-' + service)) {
         return $element.attr(attribute + '-' + service);
       } else if (attribute && $element.attr(attribute)) {
         return $element.attr(attribute);
