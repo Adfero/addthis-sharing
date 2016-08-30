@@ -25,10 +25,10 @@
     function initShare($button) {
       var service = tryOptions($button,options.serviceAttribute,options.serviceCallback,false);
       var params = [
-        ['url',tryOptions($button,options.URLAttribute,options.URLCallback,window.location.href)],
-        ['title',tryOptions($button,options.titleAttribute,options.titleCallback,false)],
-        ['description',tryOptions($button,options.descriptionAttribute,options.descriptionCallback,false)],
-        ['pubid',tryOptions($button,options.pubIdAttribute,options.pubIdCallback,false)],
+        ['url',tryOptions($button,options.URLAttribute,service,options.URLCallback,window.location.href)],
+        ['title',tryOptions($button,options.titleAttribute,service,options.titleCallback,false)],
+        ['description',tryOptions($button,options.descriptionAttribute,service,options.descriptionCallback,false)],
+        ['pubid',tryOptions($button,options.pubIdAttribute,service,options.pubIdCallback,false)],
       ]
         .filter(function(paramSet) {
           return paramSet[1] !== false;
@@ -50,11 +50,13 @@
       });
     }
 
-    function tryOptions($element,attribute,callback,fallback) {
-      if (attribute && $element.attr(attribute)) {
+    function tryOptions($element,attribute,service,callback,fallback) {
+      if (attribute && network && $element.attr(attribute + '-' + service)) {
+        return $element.attr(attribute + '-' + service);
+      } else if (attribute && $element.attr(attribute)) {
         return $element.attr(attribute);
       } else if (callback) {
-        return callback($element);
+        return callback(service,$element);
       } else {
         return fallback;
       }
